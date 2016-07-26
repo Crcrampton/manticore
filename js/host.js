@@ -35,6 +35,21 @@ function updatePlayers(players) {
     });
 }
 
+function resetPlayerSet() {
+    $('#players .player').css('color', '#eeeeee');
+    $('#players .player').css('border-bottom-color', '#999');
+}
+
+function updatePlayerSet(directives) {
+    $.each(directives, function(playerColor, directive) {
+       if (directive !== 'wait') {
+        $('#'+playerColor).css('color', '#333');
+        $('#'+playerColor).css('border-bottom-color', playerColor);
+        $.playSound('/sounds/playerSet');
+       }
+    });
+}
+
 function updateStatus(status) {
     $('#game-status').text(status);
 }
@@ -61,6 +76,7 @@ function advanceGame(gameID, result) {
         
         // Start polling for player directives after the read is over
         setTimeout(function() {
+            resetPlayerSet();
             pollDirectives();
         }, event.delay_before);
     }).fail(function(data) {
@@ -75,6 +91,7 @@ function pollDirectives() {
         $('#game-working').show();
         $.get('do.php', { action : 'pollDirectives', gameID : gameID, campaign : activeEvent.campaign, event : activeEvent.id }, function(data) {
             console.log(JSON.stringify(data));
+            updatePlayerSet(data.directives);
             var result = data.result;
            if (result === 'wait') {
             pollDirectives();
