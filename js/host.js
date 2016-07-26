@@ -36,6 +36,7 @@ function updatePlayers(players) {
 }
 
 function resetPlayerSet() {
+    $('#players .player').removeClass('set');
     $('#players .player').css('color', '#eeeeee');
     $('#players .player').css('border-bottom-color', '#999');
 }
@@ -43,9 +44,12 @@ function resetPlayerSet() {
 function updatePlayerSet(directives) {
     $.each(directives, function(playerColor, directive) {
        if (directive !== 'wait') {
-        $('#'+playerColor).css('color', '#333');
-        $('#'+playerColor).css('border-bottom-color', playerColor);
-        $.playSound('/sounds/playerSet');
+        if (!$('#'+playerColor).hasClass('set')) {
+            $('#'+playerColor).css('color', '#333');
+            $('#'+playerColor).css('border-bottom-color', playerColor);
+            $.playSound('/sounds/playerSet');
+            $('#'+playerColor).addClass('set');
+        }
        }
     });
 }
