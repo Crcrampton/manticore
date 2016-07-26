@@ -74,10 +74,11 @@ function pollDirectives() {
     
         $('#game-working').show();
         $.get('do.php', { action : 'pollDirectives', gameID : gameID, campaign : activeEvent.campaign, event : activeEvent.id }, function(data) {
-            console.log(data);
-           if (data === 'wait') {
+            console.log(JSON.stringify(data));
+            var result = data.result;
+           if (result === 'wait') {
             pollDirectives();
-           } else if (data === 'pass') {
+           } else if (result === 'pass') {
             $.playSound('/campaigns/'+activeEvent.campaign+'/sounds/'+activeEvent.campaign+'_'+activeEvent.id+'_pass');
             $('#host-html').fadeOut(1000, function() {
                 $('#host-html').load('/campaigns/'+activeEvent.campaign+'/html/'+activeEvent.campaign+'_'+activeEvent.id+'_host_pass.php');
@@ -86,7 +87,7 @@ function pollDirectives() {
             setTimeout(function() {
                 advanceGame(gameID, 'pass');
             }, activeEvent.delay_pass);
-           } else if (data === 'fail') {
+           } else if (result === 'fail') {
             $.playSound('/campaigns/'+activeEvent.campaign+'/sounds/'+activeEvent.campaign+'_'+activeEvent.id+'_fail');
             $('#host-html').fadeOut(1000, function() {
                 $('#host-html').load('/campaigns/'+activeEvent.campaign+'/html/'+activeEvent.campaign+'_'+activeEvent.id+'_host_fail.php');

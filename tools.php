@@ -156,7 +156,7 @@ function check_directives($game_id, $campaign, $event) {
     
     require_once('campaigns/'.$campaign.'/directives/'.$campaign.'_'.$event.'_directives.php');
     
-    return $result;
+    return array('result' => $result, 'directives' => $directives);
 }
 
 function advance_game($game_id, $event_result = "fail") {
