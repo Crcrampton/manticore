@@ -1,0 +1,164 @@
+body {
+    padding: 0;
+    margin: 0;
+    background: #fafafa;
+}
+
+body.splash {
+    background: #f5f5f5;
+}
+
+body.mobile {
+    background: #eee;
+}
+
+img#splash-logo {
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -215px;
+    position: absolute;
+}
+
+img#join-logo {
+    margin: 0 auto;
+    width: 100%;
+}
+
+body.mobile div.button {
+    padding: 30px;
+    font-size: 125px;
+    margin: 50px 0;
+}
+
+body.mobile input.join-data {
+    width: 100%;
+    margin: 50px 0;
+    padding: 20px;
+    font-size: 125px;
+    font-family: 'Oswald';
+    text-align: center;
+}
+
+body.mobile input#game-id {
+    text-transform: uppercase;
+}
+
+div.button {
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    font-family: 'Bitter';
+    font-weight: 700;
+    background: #76b5ff;
+    color: #FFF;
+}
+
+div#new-game {
+    top: 50%;
+    left: 50%;
+    margin-left: -100px;
+    position: absolute;
+    width: 200px;
+}
+
+div#top {
+    width: 100%;
+    margin: 0 auto 0 auto;
+    height: 50px;
+    background: #f5f5f5;
+    overflow: hidden;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, .15);
+    text-align: center;
+}
+
+div#top .top-logo {
+    max-height: 50px;
+    float: left;
+}
+
+div#top #game-status {
+    font-family: 'Oswald';
+    font-size: 25px;
+    color: #999;
+    position: absolute;
+    width: 100%;
+    top: 6px;
+}
+
+div#top #game-working {
+    float: right;
+}
+
+div#players {
+    width: 100%;
+    margin: 5px auto 0 auto;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, .15);
+}
+
+div#players div.player {
+    width: 25%;
+    border-width: 0 1px 6px 1px;
+    border-style: solid;
+    border-color: #eeeeee;
+    float: left;
+    height: 90px;
+    box-sizing: border-box;
+    padding: 10px;
+    font-family: 'Oswald';
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+    color: #333;
+}
+
+div.player-top {
+    width: 100%;
+    border-bottom: 8px solid;
+    font-family: 'Oswald';
+    font-size: 100px;
+    text-align: center;
+}
+
+div.player-top #player-icon {
+    margin-right: 50px;
+}
+
+div#host-html {
+    padding: 100px;
+    font-family: 'Bitter';
+    color: #555;
+    text-align: center;
+}
+
+div#host-html p {
+    text-align: justify;
+    font-size: 2em;
+    line-height: 1.7;
+}
+
+div#host-html h1 {
+    font-size: 4em;
+    line-height: 1.7;
+}
+
+div#player-html {
+    padding: 10px 75px;
+    font-family: 'Bitter';
+    color: #555;
+}
+
+div#player-html p {
+    font-size: 2em;
+    line-height: 1.7;
+}
+
+div#player-html h1 {
+    font-size: 4em;
+}
+
+div#player-html img.player-waiting {
+    width: 100%;
+    margin: 15% auto;
+}
