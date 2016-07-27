@@ -16,5 +16,5 @@
     setInterval(tick, 500);
 </script>
 
-<center><h1 id="clock">100</h1>
+<center><h1 id="clock" style="font-size:3em">100</h1>
 <div class="button" onclick="setDirective(time)">STOP</div>

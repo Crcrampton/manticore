@@ -22,6 +22,7 @@
     </div>
     
     <div id="host-html">
+        <p>Turn your <strong>SOUND</strong> up.</p>
         <p>On a <strong>separate</strong> device per player, go to <strong>manticore.us</strong> and join using the following game ID:</p>
         <h1><?php echo $game_id; ?></h1>
     </div>

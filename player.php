@@ -10,7 +10,7 @@
 <body class="mobile">
     <div class="player-top" style="border-bottom-color: <?php echo $player_data['player_color']; ?>"><img id="player-icon" src="images/manticore-icon.png" /><?php echo $player_data['player_name']; ?></div>
     
-    <div id="game" data-gameid="<?php echo $player_data['game_id']; ?>" data-playerid="<?php echo $player_id; ?>"></div>
+    <div id="game" data-gameid="<?php echo $player_data['game_id']; ?>" data-playerid="<?php echo $player_id; ?>" data-playercolor="<?php echo $player_data['player_color']; ?>"></div>
     
     <div id="player-html">
         <img src="images/ripple.svg" class="player-waiting">

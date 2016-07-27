@@ -1,4 +1,5 @@
 var currentEvent;
+var playerColor;
 
 $(document).ready(function() {
     pollEvent();
@@ -8,13 +9,14 @@ function pollEvent() {
     setTimeout(function() {
         var gameID = $('#game').attr('data-gameid');
         var playerID = $('#game').attr('data-playerid');
+        var playerColor = $('#game').attr('data-playercolor');
         
         $.get('do.php', { action : 'getPlayerEvent', gameID : gameID, playerID : playerID }, function(event) {
             if (event && event.title !== currentEvent) {
                 currentEvent = event.title;
                 
                 setTimeout(function() { $('#player-html').fadeOut(2000, function() {
-                    $('#player-html').load('/campaigns/'+event.campaign+'/html/'+event.campaign+'_'+event.id+'_player.php');
+                    $('#player-html').load('/campaigns/'+event.campaign+'/html/'+event.campaign+'_'+event.id+'_player.php?color='+playerColor);
                     $('#player-html').fadeIn(2000);
                 });
                 }, 1); // Do we want to wait, here?
