@@ -33,7 +33,7 @@
                 'delay_fail' =>  5000,
                 'next_pass' => 'word',
                 'next_fail' => 'word',
-            )
+            ),
             'word' => array( // Prime seconds
                 'campaign' => 'alpha',
                 'id' => 'word',
