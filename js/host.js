@@ -1,4 +1,5 @@
 var activeEvent;
+var advanceReady = false;
 
 $(document).ready(function() {
     pollPlayers();
@@ -78,10 +79,13 @@ function advanceGame(gameID, result) {
             $('#host-html').fadeIn(1000);
         });
         
-        // Start polling for player directives after the read is over
+        // Start polling for player directives immediately.
+        advanceReady = false;
+        resetPlayerSet();
+        pollDirectives();
         setTimeout(function() {
-            resetPlayerSet();
-            pollDirectives();
+            // After the read is over, make sure pollDirectives is ready to advance the game
+            advanceReady = true;
         }, event.delay_before);
     }).fail(function(data) {
             setTimeout(advanceGame(), 3000);
@@ -97,7 +101,7 @@ function pollDirectives() {
             console.log(JSON.stringify(data));
             updatePlayerSet(data.directives);
             var result = data.result;
-           if (result === 'wait') {
+           if (result === 'wait' || advanceReady == false) {
             pollDirectives();
            } else if (result === 'pass') {
             $.playSound('/campaigns/'+activeEvent.campaign+'/sounds/'+activeEvent.campaign+'_'+activeEvent.id+'_pass');
