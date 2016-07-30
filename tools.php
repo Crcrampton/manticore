@@ -24,8 +24,8 @@ function add_game($game_id) {
     $campaign = 'none';
     $event = 'wait';
     
-    $query = "INSERT INTO game (game_id, campaign, event)
-    VALUES ('$game_id', '$campaign', '$event')";
+    $query = "INSERT INTO game (game_id, campaign, event, event_state)
+    VALUES ('$game_id', '$campaign', '$event', 'wait')";
     return mysql_query($query);
 }
 
@@ -136,7 +136,7 @@ function update_game($game_id, $campaign, $event) {
             WHERE game_id='$game_id'";
             
     reset_game_directives($game_id);
-    set_event_state('wait');
+    set_event_state($game_id, 'wait');
     
     return mysql_query($query);
 }
@@ -177,7 +177,7 @@ function check_directives($game_id, $campaign, $event) {
     
     require_once('campaigns/'.$campaign.'/directives/'.$campaign.'_'.$event.'_directives.php');
     
-    if ($result != 'wait') set_event_state('kill');
+    if ($result != 'wait') set_event_state($game_id, 'kill');
     
     return array('result' => $result, 'directives' => $directives);
 }
