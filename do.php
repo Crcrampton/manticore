@@ -56,6 +56,12 @@
             echo json_encode(get_active_event($game_id));
             break;
         
+        case 'getEventState':
+            $game_id = $_GET['gameID'];
+            
+            echo json_encode(get_event_state($game_id));
+            break;
+        
         case 'getPlayerEvent':
             $game_id = $_GET['gameID'];
             $player_id = $_GET['playerID'];

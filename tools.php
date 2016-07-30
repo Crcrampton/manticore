@@ -93,6 +93,17 @@ function get_active_event($game_id) {
     }
 }
 
+function get_event_state($game_id) {
+    $query = "SELECT event_state
+            FROM game
+            WHERE game_id='$game_id'";
+    $result = mysql_query($query);
+    
+    $game = mysql_fetch_array($result, MYSQLI_ASSOC);
+    
+    return $game['event_state'];
+}
+
 function get_player_event($game_id, $player_id) {
     $query = "SELECT campaign, event
             FROM game
