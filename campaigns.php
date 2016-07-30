@@ -38,7 +38,7 @@
                 'campaign' => 'alpha',
                 'id' => 'word',
                 'title' => 'Alpha Word',
-                'delay_before' => 5000,
+                'delay_before' => 15000,
                 'delay_pass' =>  5000,
                 'delay_fail' =>  5000,
                 'next_pass' => '',

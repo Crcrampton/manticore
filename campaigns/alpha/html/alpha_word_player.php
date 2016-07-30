@@ -23,15 +23,14 @@
 
 <?php if ($color == 'red') { ?>
 <input id="word" type="text" placeholder="What's the word?" />
-<?php } ?>
 
 <script>
-    // JS for this game
+    // JS for this game (only red player)
     
     $(document).ready(function() {
         var checkTimes = 0;
         var correct = "CALCULATOR";
-        var checkInterval = setIntervalX(function() {
+        var checkInterval = setInterval(function() {
             if ($('#word').val().toUpperCase() === correct) {
                 clearInterval(checkInterval);
                 setDirective("pass");
@@ -39,6 +38,8 @@
             if (++checkTimes == 120) {
                 setDirective("fail");
             }
-        }, 50);
+        }, 500);
     });
 </script>
+
+<?php } ?>

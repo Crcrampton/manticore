@@ -42,6 +42,7 @@ function pollEventState() {
         var playerID = $('#game').attr('data-playerid');
         
         $.get('do.php', { action : 'getEventState', gameID : gameID, playerID : playerID }, function(data) {
+            console.log(data);
             if (data === 'kill') {
                 killPlayer();
                 pollEvent();
