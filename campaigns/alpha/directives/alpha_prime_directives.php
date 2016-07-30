@@ -17,7 +17,7 @@
             $total++;
             $prime++;
         } else if ($directive != "wait") {
-            $total++;
+            $result = "fail";
         }
     }
     

@@ -60,18 +60,17 @@ function pollEventState() {
     }, 500);
 }
 
-function setDirective(directive) {
+function setDirective(directive, stayAlive) {
     var gameID = $('#game').attr('data-gameid');
     var playerID = $('#game').attr('data-playerid');
     
-    // Immediately lock the player out, we don't ever want to send more than one directive
-    // window.navigator.vibrate(200);
+    // If we haven't been told to keep the player alive, kill him
     
-    killPlayer();
+    if (stayAlive !== true) { killPlayer(); }
     
     $.get('do.php', { action : 'setPlayerDirective', gameID : gameID, playerID : playerID, directive : directive }, function(event) {
         // Mark the event as over so we don't continue to poll for event changes - instead we'll poll for the new event
-        eventOver = true;
+        if (stayAlive !== true) { eventOver = true; }
     }).fail(function(data) {
         setTimeout(setDirective(), 3000);
     });
@@ -86,6 +85,6 @@ function setDirectiveTimer(seconds) {
 }
 
 function killPlayer() {
-    // Replaces all player HTML with the loading screen - called when a directive is set or a kill signal is sent by the host
+    // Replaces all player HTML with the loading screen - called when a kill signal is sent by the host
     $('#player-html').html('<img src="images/ripple.svg" class="player-waiting">');
 }
