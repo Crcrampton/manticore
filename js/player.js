@@ -1,6 +1,7 @@
 var currentEvent;
 var playerColor;
 var eventOver;
+var directiveTimer;
 
 $(document).ready(function() {
     pollEvent();
@@ -73,6 +74,14 @@ function setDirective(directive) {
     }).fail(function(data) {
         setTimeout(setDirective(), 3000);
     });
+}
+
+function setDirectiveTimer(seconds) {
+    if (directiveTimer) { clearTimeout(directiveTimer); }
+    
+    var directiveTimer = setTimeout(function() {
+        setDirective('fail');
+    }, seconds * 100);
 }
 
 function killPlayer() {

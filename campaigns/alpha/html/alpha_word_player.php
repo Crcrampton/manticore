@@ -29,11 +29,16 @@
     // JS for this game
     
     $(document).ready(function() {
-        $('#word').change(function() {
-            var correct = "CALCULATOR";
-            if ($(this).val().toUpperCase() === correct) {
+        var checkTimes = 0;
+        var correct = "CALCULATOR";
+        var checkInterval = setIntervalX(function() {
+            if ($('#word').val().toUpperCase() === correct) {
+                clearInterval(checkInterval);
                 setDirective("pass");
-            }        
-        });
+            }
+            if (++checkTimes == 120) {
+                setDirective("fail");
+            }
+        }, 50);
     });
 </script>

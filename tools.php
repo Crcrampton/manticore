@@ -104,6 +104,14 @@ function get_event_state($game_id) {
     return $game['event_state'];
 }
 
+function set_event_state($game_id, $event_state) {
+    $query = "UPDATE game
+            SET event_state='$event_state'
+            WHERE game_id='$game_id'";
+    
+    return mysql_query($query);
+}
+
 function get_player_event($game_id, $player_id) {
     $query = "SELECT campaign, event
             FROM game
@@ -128,6 +136,7 @@ function update_game($game_id, $campaign, $event) {
             WHERE game_id='$game_id'";
             
     reset_game_directives($game_id);
+    set_event_state('wait');
     
     return mysql_query($query);
 }
@@ -143,6 +152,7 @@ function reset_game_directives($game_id) {
     $query = "UPDATE player
             SET player_directive='wait'
             WHERE game_id='$game_id'";
+    
     return mysql_query($query);
 }
 
@@ -166,6 +176,8 @@ function check_directives($game_id, $campaign, $event) {
     $result = 'wait';
     
     require_once('campaigns/'.$campaign.'/directives/'.$campaign.'_'.$event.'_directives.php');
+    
+    if ($result != 'wait') set_event_state('kill');
     
     return array('result' => $result, 'directives' => $directives);
 }

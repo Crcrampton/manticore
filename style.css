@@ -31,13 +31,14 @@ body.mobile div.button {
     margin: 50px 0;
 }
 
-body.mobile input.join-data {
+body.mobile input {
     width: 100%;
     margin: 50px 0;
     padding: 20px;
     font-size: 125px;
     font-family: 'Oswald';
     text-align: center;
+    min-height: 0;
 }
 
 body.mobile input#game-id {
